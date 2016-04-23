@@ -2,10 +2,10 @@ import numpy as np
 from scipy import optimize
 
 class NeuralNetwork(object):
-    def __init__(self, inputLayerSize=2, outputLayerSize=1, hiddenLayerSize=3, Lambda=0.0001):        
+    def __init__(self, inputLayerSize=2, hiddenLayerSize=3, Lambda=0.0001):        
         # define yyperparameters
         self.inputLayerSize = inputLayerSize
-        self.outputLayerSize = outputLayerSize
+        self.outputLayerSize = 1 # can only be 1 for now
         self.hiddenLayerSize = hiddenLayerSize
         
         # REGULARIZATION parameter to avoid OVERFITTING
