@@ -1,4 +1,6 @@
 from random import randint, shuffle
+import matplotlib.pyplot as plt
+import numpy as np
 
 class QueensPuzzle(object):
     def __init__(self, size=8):
@@ -47,3 +49,28 @@ class QueensPuzzle(object):
     def mutation(self, node):
         i = randint(0, len(node)-1)
         node[i]=randint(0, len(node)-1)
+    def printBoard(self, board):
+        size = len(board)
+        image = np.zeros(size**2)
+        # alternate pattern
+        for i in range(0, size**2, 2):
+            if((i//size) % 2):
+                image[i] = 10
+            else:
+                image[i+1] = 10
+        # populating with queens
+        for i in range(0, size):
+            image[i*(size) + board[i]] = 150
+        imageT = np.zeros(size**2)
+        # translating
+        for i in range(0, size**2):
+            imageT[((i%size)*size) + (i//size)]=image[i]
+        image = imageT
+        # reshape things
+        image = image.reshape((size, size))
+        row_labels = range(size)
+        col_labels = range(size)
+        plt.matshow(image)
+        plt.xticks(range(size), col_labels)
+        plt.yticks(range(size), row_labels)
+        plt.show()
