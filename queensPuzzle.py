@@ -32,6 +32,8 @@ class QueensPuzzle(object):
         conflicts = 0;
         for c in range(0, self.size):
             for j in range(0, self.size):
+                if c!=j and board[c]==board[j]:
+                    conflicts += 1
                 if c!=j and (abs(c-j)==abs(board[c]-board[j])):
                     conflicts += 1
         return (-1)*conflicts
@@ -39,3 +41,9 @@ class QueensPuzzle(object):
     def halting(self, evaluation):
         return (evaluation == 0)
     
+    def fitness(self, node):
+        return self.evaluate(node)
+    
+    def mutation(self, node):
+        i = randint(0, len(node)-1)
+        node[i]=randint(0, len(node)-1)
