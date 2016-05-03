@@ -1,4 +1,4 @@
-# Artificial-Intelligence-Py
+# Artificial Intelligence Py
 Artificial Intelligence experiments using Python and Jupyter.
 
 #### Why do I need it?
