@@ -2,7 +2,7 @@
 Artificial Intelligence experiments using Python and Jupyter.
 
 #### Why do I need it?
-You really don't :ghost:. There are a lot of libraries for machine learning out there that are way better then this one. This is meant to be just an experiment or simply practice.
+This is meant to be just an experiment or simply practice, and there are a lot of libraries for machine learning out there that are way better then this one.
 
 
 ## Implemented algorithms
