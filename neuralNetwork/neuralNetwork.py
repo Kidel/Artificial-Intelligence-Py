@@ -2,10 +2,10 @@ import numpy as np
 from scipy import optimize
 
 class NeuralNetwork(object):
-    def __init__(self, inputLayerSize=2, hiddenLayerSize=3, Lambda=0.0001):        
+    def __init__(self, inputLayerSize=2, hiddenLayerSize=3, outputLayerSize=1, Lambda=0.0001):        
         # define yyperparameters
         self.inputLayerSize = inputLayerSize
-        self.outputLayerSize = 1 # can only be 1 for now
+        self.outputLayerSize = outputLayerSize
         self.hiddenLayerSize = hiddenLayerSize
         
         # REGULARIZATION parameter to avoid OVERFITTING
@@ -52,7 +52,7 @@ class NeuralNetwork(object):
     # computes cost J for given X and y
     def costFunction(self, X, y):
         self.yHat = self.forward(X)
-        J = 0.5*sum((y-self.yHat)**2)/X.shape[0] + (self.Lambda/2) #*(sum(self.W1**2)+sum(self.W2**2))
+        J = 0.5*sum((y-self.yHat)**2)/X.shape[0] + (self.Lambda)*(1/2)*((sum(self.W1)/len(self.W1))**2 + (sum(self.W2)/len(self.W2))**2)
         return J
     
     # computes derivative with respect to W and W2 for a given X and y
@@ -61,11 +61,11 @@ class NeuralNetwork(object):
         
         delta3 = np.multiply(-(y-self.yHat), self.sigmoidPrime(self.z3))
         # add gradient of regularization term:
-        dJdW2 = np.dot(self.a2.T, delta3)/X.shape[0] + self.Lambda*self.W2
+        dJdW2 = np.dot(self.a2.T, delta3)/X.shape[0] + self.Lambda*(sum(self.W2)/len(self.W2))
         
         delta2 = np.dot(delta3, self.W2.T)*self.sigmoidPrime(self.z2)
         # add gradient of regularization term:
-        dJdW1 = np.dot(X.T, delta2)/X.shape[0] + self.Lambda*self.W1
+        dJdW1 = np.dot(X.T, delta2)/X.shape[0] + self.Lambda*(sum(self.W1)/len(self.W1))
         
         return dJdW1, dJdW2
     
@@ -104,7 +104,7 @@ class Trainer(object):
         cost = self.N.costFunction(X, y)
         grad = self.N.computeGradients(X,y)
         
-        return cost, grad
+        return sum(cost)/len(cost), grad
         
     def train(self, trainX, trainY, testX, testY):
         # make an internal variable for the callback function for plotting
