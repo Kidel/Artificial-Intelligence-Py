@@ -1,5 +1,5 @@
 # Artificial Intelligence Py
-Artificial Intelligence experiments using Python and Jupyter.
+Artificial Intelligence experiments using **Python** in **Jupyter Notebook**.
 
 #### Why do I need it?
 This is meant to be just an experiment or simply practice, and there are a lot of libraries for machine learning out there that are way better then this one.
