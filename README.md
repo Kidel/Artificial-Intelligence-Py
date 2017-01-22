@@ -2,18 +2,13 @@
 Artificial Intelligence experiments using **Python** in **Jupyter Notebook**.
 
 #### Why do I need it?
-This is meant to be just an experiment or simply practice, and there are a lot of libraries for machine learning out there that are way better then this one.
+This is meant to be just code kata. Don't use it, there are more optimized libraries (expecially for neural networks, see [here](https://github.com/Kidel/Deep-Learning-CNN-for-Image-Recognition)).
 
 
 ## Implemented algorithms
 * Neural Network training (1 hidden layer)
 * Simulated Annealing
 * Genetic Algorithm
-
-***
-
-## Installation
-Just install [Jupyter Notebook](http://jupyter.org/) or [Anaconda](https://www.continuum.io/downloads), run the notebook and browse to the files.
 
 ***
 #### Special thanks and credits
